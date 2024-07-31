@@ -1,0 +1,91 @@
+<!-- register.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        window.history.forward(); 
+       function noBack() { 
+           window.history.forward(); 
+       } 
+   </script>
+   <style>   
+.registration-form {
+  width: 100%;
+  max-width: 400px;
+  display: inline-block;
+  background-color: #ffffff00;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.registration-form input[type="text"], .registration-form input[type="password"] {
+  width: 90%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-weight: bold;
+  font-size: medium;
+}
+.registration-form input[type="submit"] {
+  width: 50%;
+  margin-left: 100px;
+  margin-bottom: 35px;
+  padding: 15px;
+  background-color: rgb(98, 153, 255);
+  color: antiquewhite;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: larger;
+}
+h1{
+    text-align: center;
+}
+body{
+        background-image: url('https://img.freepik.com/premium-photo/education-day-arrangement-table-with-copy-space_327072-27326.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;  
+        background-position: center;
+        margin-left: 800px;
+        margin-top: 50px;
+
+    }
+a{
+  font-size: larger;
+  color: aqua;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+p{
+  font-size: larger;
+  margin-left: 80px;
+  color: aliceblue;
+}
+h1{
+  color: aqua;
+}
+   </style>
+</head>
+<body>
+  <form class="registration-form" action="/register" method="post">
+      <h1>Registration Form</h1>
+      <input type="text" placeholder="Username" id="username" name="username" value="" autocomplete="off" required>
+      <input type="password" placeholder="Password" id="password" name="password" value="" autocomplete="off" required>
+      <% if (typeof errorMessage !== 'undefined') { %>
+        <!-- <script>
+            alert('<%= errorMessage %>');
+        </script> -->
+        <p style="color: red;"><%= errorMessage %></p>
+      <% } %>
+      <input type="submit" value="Register">
+      <p>Already have an account? <a href="/login">Login</a></p>
+  </form>
+</body>
+</html>

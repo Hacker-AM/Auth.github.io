@@ -1,0 +1,55 @@
+<!-- login/views/dashboard.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script>
+        function logout() {
+        // Redirect to the logout route
+        window.location.href = '/logout';
+        }
+        function editProfile(){
+            // Redirect to the editProfile route
+            window.location.href = '/editProfile';
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+            background-image: url('https://images.creativemarket.com/0.1.0/ps/1293704/1170/772/m1/fpnw/wm0/backtoschool-.jpg?1463842503&s=d826e1d1a73f5bfb66515968752c6c21');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;  
+        }
+
+        h1 {
+            color: rgb(255, 255, 255);
+            margin-top: 100px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 10px;
+            background-color: #25b12a;
+            color: rgb(246, 248, 248);
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: larger;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Dashboard, <%= user.username %>!</h1>
+    <a onclick="editProfile()">Edit Profile</a>
+    <a onclick="logout()">Logout</a>
+</body>
+</html>

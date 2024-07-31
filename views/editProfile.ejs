@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-image: url('https://wallpapercave.com/wp/wp1954191.jpg');
+            background-position: center;
+        }
+
+        #editProfileForm {
+            max-width: 400px;
+            margin: 50px 100px;
+            background: #ffffff1c;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bolder;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            font-weight: bold;
+            font-size: medium;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: medium;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #passwordConfirmationModal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        #passwordConfirmationModal label,
+        #passwordConfirmationModal input {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        #passwordConfirmationModal button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #passwordConfirmationModal button:hover {
+            background-color: #2980b9;
+        }
+
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- <% if (message) { %>
+        <p><%= message %></p>
+    <% } %> -->
+    <!-- First Form -->
+<form id="editProfileForm" action="/editProfile" method="POST">
+    <h1>Edit Profile</h1>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" value="<%= user.username %>" readonly required>
+    <br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" value="<%= user.email %>" autocomplete="off" required>
+    <br>
+
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" value="<%= user.firstName %>" autocomplete="off" required>
+    <br>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" value="<%= user.lastName %>" autocomplete="off" required>
+    <br>
+
+    <!-- Add a button to trigger password confirmation -->
+    <button type="button" onclick="showPasswordConfirmation()">Save Changes</button>
+    <button type="button" onclick="dashboard()">Back To Home</button>
+</form>
+
+<!-- Password confirmation modal -->
+<div id="passwordConfirmationModal" style="display: none;">
+    <label for="password">Enter your password to confirm:</label>
+    <input type="password" id="password" name="password" required>
+    <button type="button" onclick="confirmPassword()">Confirm</button>
+</div>
+    <script>
+        function showPasswordConfirmation() {
+        // Display the password confirmation modal
+        document.getElementById('passwordConfirmationModal').style.display = 'block';
+        }
+
+        function confirmPassword() {
+            // Get the password input value
+            var password = document.getElementById('password').value;
+
+            // Add a hidden input to the form to submit the password
+            var hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            hiddenInput.name = 'password';
+            hiddenInput.value = password;
+            document.getElementById('editProfileForm').appendChild(hiddenInput);
+
+            // Submit the form with the added password input
+            document.getElementById('editProfileForm').submit();
+        }
+        function dashboard(){
+            window.location.href = '/dashboard';
+        }
+    </script>
+</body>
+</html>
